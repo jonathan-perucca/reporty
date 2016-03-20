@@ -1,6 +1,6 @@
 package com.github.perucca;
 
-import com.github.perucca.domain.StudentEvaluation;
+import com.github.perucca.domain.model.StudentEvaluation;
 import org.junit.Test;
 
 import static com.github.perucca.CsvMapper.isIntergerParsable;

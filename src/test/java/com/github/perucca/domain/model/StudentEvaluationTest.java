@@ -1,4 +1,4 @@
-package com.github.perucca.domain;
+package com.github.perucca.domain.model;
 
 import org.junit.Test;
 
@@ -17,8 +17,8 @@ public class StudentEvaluationTest {
         List<Answer> answers = asList(1, 5, 6).stream().map(Answer::new).collect(toList());
         studentEvaluation = StudentEvaluation.builder().answers(answers).build();
 
-        Double averageMark = studentEvaluation.computeMarks();
+        String averageMark = studentEvaluation.computeTotal();
 
-        assertThat(averageMark).isEqualTo(4.0);
+        assertThat(averageMark).isEqualTo("12,00");
     }
 }

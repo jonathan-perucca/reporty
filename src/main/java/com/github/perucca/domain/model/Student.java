@@ -1,4 +1,4 @@
-package com.github.perucca.domain;
+package com.github.perucca.domain.model;
 
 import lombok.Builder;
 import lombok.Getter;

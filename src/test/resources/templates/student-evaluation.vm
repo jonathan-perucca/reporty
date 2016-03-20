@@ -1,0 +1,8 @@
+
+Bonjour ${student.name}
+
+Vous avez eu : ${average_mark}
+
+${comment}
+
+Cordialement.

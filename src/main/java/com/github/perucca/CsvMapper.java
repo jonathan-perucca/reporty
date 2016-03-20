@@ -1,8 +1,8 @@
 package com.github.perucca;
 
-import com.github.perucca.domain.Answer;
-import com.github.perucca.domain.Student;
-import com.github.perucca.domain.StudentEvaluation;
+import com.github.perucca.domain.model.Answer;
+import com.github.perucca.domain.model.Student;
+import com.github.perucca.domain.model.StudentEvaluation;
 
 import java.util.ArrayList;
 import java.util.List;

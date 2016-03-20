@@ -1,6 +1,7 @@
 package com.github.perucca.mailer.service;
 
 import com.github.perucca.mailer.Template;
+import com.github.perucca.mailer.Template.TemplateView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,9 @@ public class MailerService {
     public void sendMail(Template template) {
         Map<String, Object> properties = template.getModel();
         String receiverMail = template.getReceiverMail();
-        String mailContent = velocityService.getMailContent(properties);
+        TemplateView templateView = template.getTemplateView();
+
+        String mailContent = velocityService.getMailContent(templateView.getFileName(), properties);
 
         mailSender.send(mimeMessage -> {
             mimeMessage.setFrom("under.64@gmail.com");

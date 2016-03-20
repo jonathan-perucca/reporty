@@ -16,9 +16,7 @@ public class VelocityService {
     private final VelocityEngine velocityEngine;
     private final String ENCODING = "UTF-8";
 
-    public String getMailContent(Map<String, Object> model) {
-        String resourcePath = "";
-
-        return mergeTemplateIntoString(velocityEngine, resourcePath, ENCODING, model);
+    public String getMailContent(String fileName, Map<String, Object> model) {
+        return mergeTemplateIntoString(velocityEngine, fileName, ENCODING, model);
     }
 }

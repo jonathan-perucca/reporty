@@ -1,8 +1,11 @@
-package com.github.perucca;
+package com.github.perucca.domain.service;
 
-import com.github.perucca.domain.StudentEvaluation;
+import com.github.perucca.CsvMapper;
+import com.github.perucca.CsvReader;
+import com.github.perucca.domain.mail.StudentEvaluationTemplate;
+import com.github.perucca.domain.model.StudentEvaluation;
 import com.github.perucca.mailer.service.MailerService;
-import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -14,19 +17,22 @@ import java.util.List;
 
 import static java.util.stream.Collectors.toList;
 
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+
 @Service
+@Setter
 public class StudentService {
 
-    private final MailerService mailerService;
+    @Autowired
+    private MailerService mailerService;
 
-    public void notifyStudents(List<StudentEvaluation> studentEvaluations) {
-        studentEvaluations.stream()
+    public void notifyStudents(String filePath) {
+        getStudentEvaluations(filePath)
+                .stream()
                 .map(StudentEvaluationTemplate::new)
                 .forEach(mailerService::sendMail);
     }
 
-    public List<StudentEvaluation> getStudentEvaluations(String filePath) {
+    protected List<StudentEvaluation> getStudentEvaluations(String filePath) {
         return  read(filePath)
                 .getLines()
                 .stream()

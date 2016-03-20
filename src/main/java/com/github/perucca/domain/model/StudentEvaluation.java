@@ -1,4 +1,4 @@
-package com.github.perucca.domain;
+package com.github.perucca.domain.model;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -17,17 +17,18 @@ public class StudentEvaluation {
     private List<Answer> answers;
     private String comment;
 
-    public Double computeMarks() {
-        return answers.stream()
-                .mapToInt(Answer::getMark)
-                .average()
-                .getAsDouble();
+    public String computeTotal() {
+        double total = answers.stream()
+                .mapToDouble(Answer::getMark)
+                .sum();
+
+        return String.format("%.2f", total);
     }
 
     public Map<String, Object> toMapProperties() {
         final HashMap<String, Object> map = new HashMap<>();
         map.put("student", student);
-        map.put("average_mark", computeMarks());
+        map.put("average_mark", computeTotal());
         map.put("comment", comment);
 
         return map;
