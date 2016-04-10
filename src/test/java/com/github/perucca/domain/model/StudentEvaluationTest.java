@@ -19,6 +19,6 @@ public class StudentEvaluationTest {
 
         String averageMark = studentEvaluation.computeTotal();
 
-        assertThat(averageMark).isEqualTo("12,00");
+        assertThat(averageMark).isEqualTo("12.0");
     }
 }

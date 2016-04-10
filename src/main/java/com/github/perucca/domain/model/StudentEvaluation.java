@@ -22,7 +22,7 @@ public class StudentEvaluation {
                 .mapToDouble(Answer::getMark)
                 .sum();
 
-        return String.format("%.2f", total);
+        return String.valueOf(total);
     }
 
     public Map<String, Object> toMapProperties() {
